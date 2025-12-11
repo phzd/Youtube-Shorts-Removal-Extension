@@ -2,45 +2,51 @@
 <html>
   <body>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #1f1f1f;
-            min-width: 250px;
-            padding: 15px;
-            color: #ffffff;
-            font-size: 1.2em;
-            line-height: 1.6em;
-        }
+      body {
+          font-family: 'Arial', sans-serif;
+          background-color: #1f1f1f;
+          min-width: 250px;
+          padding: 15px;
+          color: #ffffff;
+          font-size: 1.2em;
+          line-height: 1.6em;
+      }
 
-        label {
-          display: block;
-          margin-bottom: 10px;
-          cursor: pointer;
-        }
+      label {
+        display: block;
+        margin-bottom: 10px;
+        cursor: pointer;
+      }
 
-        .cb {
-            color: #eee; /* light text for dark background */
-            font-family: sans-serif;
-        }
+      .cb {
+          color: #eee; /* light text for dark background */
+          font-family: sans-serif;
+      }
 
-        .cb input {
-            margin-right: .4em;
-        }
+      .cb input {
+          margin-right: .4em;
+      }
 
-        input[type="checkbox"] {
-            accent-color: #4aa3ff; /* nice light-blue tick */
-            margin-right: 8px;
-        }
+      input[type="checkbox"] {
+          accent-color: #4aa3ff; /* nice light-blue tick */
+          margin-right: 8px;
+      }
 
         
     </style>
     <label>
-      <input type="checkbox" id="removeShortsGuide" class="cb">
+    <input type="checkbox" id="removeShortsGuide">
       Remove Shorts from sidebar
     </label>
+    <br>
     <label>
-      <input type="checkbox" id="removeShortsFeed" class="cb">
+      <input type="checkbox" id="removeShortsFeed">
       Remove Shorts feed from home
+    </label>
+    <br>
+    <label>
+      <input type="checkbox" id="removePlayables">
+      Remove YouTube Playables
     </label>
     <script src="popup.js"></script>
   </body>
