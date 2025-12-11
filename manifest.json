@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Youtube Shorts Removal",
+  "name": "Hide YouTube Shorts",
   "version": "1.3",
   "description": "An extension to remove YouTube Shorts from the homepage and sidebar.",
   "icons": {
