@@ -6,21 +6,28 @@ const removeShortsGuideItem = () => {
   });
 };
 
-const tryRemove = () => {
-  chrome.storage.sync.get("enabled", data => {
-    if (data.enabled === false) return;
-    removeShortsGuideItem();
+const removeShortsFeed = () => {
+  const shelves = document.querySelectorAll('ytd-rich-shelf-renderer[is-shorts]');
+  shelves.forEach(shelf => {
+    const section = shelf.closest('ytd-rich-section-renderer');
+    if (section) section.remove();
   });
 };
 
-// do it once
+const tryRemove = () => {
+  chrome.storage.sync.get(["removeShortsGuide", "removeShortsFeed"], data => {
+    if (data.removeShortsGuide !== false) removeShortsGuideItem();
+    if (data.removeShortsFeed !== false) removeShortsFeed();
+  });
+};
+
 tryRemove();
 
-// listen for changes
 chrome.runtime.onMessage.addListener(msg => {
-  if (msg.enabled) tryRemove();
+  if (msg.removeShortsGuide !== undefined || msg.removeShortsFeed !== undefined) {
+    tryRemove();
+  }
 });
 
-// observe DOM changes still
 const obs = new MutationObserver(() => tryRemove());
 obs.observe(document.body, { childList: true, subtree: true });

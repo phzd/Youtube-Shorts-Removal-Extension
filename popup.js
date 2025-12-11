@@ -1,11 +1,20 @@
-const toggle = document.getElementById("toggle");
+const toggleGuide = document.getElementById("removeShortsGuide");
+const toggleFeed = document.getElementById("removeShortsFeed");
 
-chrome.storage.sync.get("enabled", data => {
-  toggle.checked = data.enabled !== false; // default true
+chrome.storage.sync.get(["removeShortsGuide", "removeShortsFeed"], data => {
+  toggleGuide.checked = data.removeShortsGuide !== false;
+  toggleFeed.checked = data.removeShortsFeed !== false;
 });
 
-toggle.addEventListener("change", () => {
-  const enabled = toggle.checked;
-  chrome.storage.sync.set({ enabled });
-  chrome.runtime.sendMessage({ enabled });
-});
+const updateSettings = () => {
+  const settings = {
+    removeShortsGuide: toggleGuide.checked,
+    removeShortsFeed: toggleFeed.checked
+  };
+  
+  chrome.storage.sync.set(settings);
+  chrome.runtime.sendMessage(settings);
+};
+
+toggleGuide.addEventListener("change", updateSettings);
+toggleFeed.addEventListener("change", updateSettings);

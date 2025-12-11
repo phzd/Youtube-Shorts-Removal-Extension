@@ -5,9 +5,17 @@
         body {
             font-family: 'Arial', sans-serif;
             background-color: #1f1f1f;
+            min-width: 250px;
+            padding: 15px;
             color: #ffffff;
             font-size: 1.2em;
             line-height: 1.6em;
+        }
+
+        label {
+          display: block;
+          margin-bottom: 10px;
+          cursor: pointer;
         }
 
         .cb {
@@ -21,12 +29,18 @@
 
         input[type="checkbox"] {
             accent-color: #4aa3ff; /* nice light-blue tick */
+            margin-right: 8px;
         }
 
         
     </style>
     <label>
-      <input type="checkbox" id="toggle" class="cb"> Enable removal
+      <input type="checkbox" id="removeShortsGuide" class="cb">
+      Remove Shorts from sidebar
+    </label>
+    <label>
+      <input type="checkbox" id="removeShortsFeed" class="cb">
+      Remove Shorts feed from home
     </label>
     <script src="popup.js"></script>
   </body>
